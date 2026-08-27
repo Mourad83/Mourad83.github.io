@@ -7,168 +7,546 @@
   <title>Renault Morocco | Projet Power BI | Mourad Chafiqi</title>
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="styles.css">
+
   <style>
-    .case-page{background:#f7f7f5;color:#171717;min-height:100vh}
-    .case-shell{width:min(1180px,calc(100% - 40px));margin:0 auto}
-    .case-header{display:flex;justify-content:space-between;align-items:center;padding:24px 0}
-    .case-back{text-decoration:none;color:#171717;font-weight:700}
-    .case-hero{padding:76px 0 48px}
-    .case-eyebrow{margin:0 0 12px;color:#a36f00;text-transform:uppercase;letter-spacing:.12em;font-size:.82rem;font-weight:800}
-    .case-hero h1{font-size:clamp(2.6rem,7vw,5.8rem);line-height:.95;margin:0;max-width:1000px}
-    .case-lead{font-size:1.18rem;line-height:1.7;max-width:820px;color:#5e5e5e;margin-top:28px}
-    .case-cover{margin-top:46px}
-    .case-cover img,.case-gallery img{width:100%;height:auto;display:block;border-radius:22px;border:1px solid #ddd;background:#fff}
-    .case-meta{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:40px 0 80px}
-    .case-meta article{background:#fff;padding:22px;border:1px solid #ddd;border-radius:18px}
-    .case-meta span{display:block;color:#777;font-size:.78rem;text-transform:uppercase;letter-spacing:.08em}
-    .case-meta strong{display:block;margin-top:8px;line-height:1.45}
-    .case-section{padding:68px 0;border-top:1px solid #ddd}
-    .case-section h2{font-size:clamp(2rem,4vw,3.4rem);margin:0 0 26px}
-    .case-grid-two{display:grid;grid-template-columns:1fr 1fr;gap:28px}
-    .case-card{background:#fff;border:1px solid #ddd;border-radius:20px;padding:28px}
-    .case-card h3{margin-top:0}
-    .case-card p,.case-card li{color:#5f5f5f;line-height:1.7}
-    .case-kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
-    .case-kpis div{background:#111;color:#fff;border-radius:18px;padding:22px}
-    .case-kpis span{display:block;color:#f2b408;font-size:.78rem;text-transform:uppercase}
-    .case-kpis strong{display:block;margin-top:8px}
-    .case-gallery{display:grid;gap:28px}
-    .case-gallery figure{margin:0}
-    .case-gallery figcaption{font-weight:700;margin:12px 4px 0}
-    .case-tags{display:flex;flex-wrap:wrap;gap:10px}
-    .case-tags span{background:#fff;border:1px solid #ccc;border-radius:999px;padding:10px 14px}
-    .case-footer{padding:50px 0 80px}
-    @media(max-width:800px){
-      .case-meta,.case-kpis,.case-grid-two{grid-template-columns:1fr}
-      .case-header{gap:20px}
-      .case-hero{padding-top:40px}
+    .case-page {
+      background: #f7f7f5;
+      color: #171717;
+      min-height: 100vh;
+    }
+
+    .case-shell {
+      width: min(1180px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    .case-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 24px 0;
+    }
+
+    .case-back {
+      text-decoration: none;
+      color: #171717;
+      font-weight: 700;
+    }
+
+    .case-hero {
+      padding: 76px 0 48px;
+    }
+
+    .case-eyebrow {
+      margin: 0 0 12px;
+      color: #a36f00;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      font-size: .82rem;
+      font-weight: 800;
+    }
+
+    .case-hero h1 {
+      font-size: clamp(2.6rem, 7vw, 5.8rem);
+      line-height: .95;
+      margin: 0;
+      max-width: 1000px;
+    }
+
+    .case-lead {
+      font-size: 1.18rem;
+      line-height: 1.7;
+      max-width: 820px;
+      color: #5e5e5e;
+      margin-top: 28px;
+    }
+
+    .case-cover {
+      margin-top: 46px;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      border-radius: 22px;
+      border: 1px solid #ddd;
+      background: #fff;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .case-cover img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+    }
+
+    .case-meta {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      margin: 40px 0 80px;
+    }
+
+    .case-meta article {
+      background: #fff;
+      padding: 22px;
+      border: 1px solid #ddd;
+      border-radius: 18px;
+    }
+
+    .case-meta span {
+      display: block;
+      color: #777;
+      font-size: .78rem;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+    }
+
+    .case-meta strong {
+      display: block;
+      margin-top: 8px;
+      line-height: 1.45;
+    }
+
+    .case-section {
+      padding: 68px 0;
+      border-top: 1px solid #ddd;
+    }
+
+    .case-section h2 {
+      font-size: clamp(2rem, 4vw, 3.4rem);
+      margin: 0 0 26px;
+    }
+
+    .case-grid-two {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+    }
+
+    .case-card {
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 20px;
+      padding: 28px;
+    }
+
+    .case-card h3 {
+      margin-top: 0;
+    }
+
+    .case-card p,
+    .case-card li {
+      color: #5f5f5f;
+      line-height: 1.7;
+    }
+
+    .case-kpis {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+    }
+
+    .case-kpis div {
+      background: #111;
+      color: #fff;
+      border-radius: 18px;
+      padding: 22px;
+    }
+
+    .case-kpis span {
+      display: block;
+      color: #f2b408;
+      font-size: .78rem;
+      text-transform: uppercase;
+    }
+
+    .case-kpis strong {
+      display: block;
+      margin-top: 8px;
+    }
+
+    .case-gallery {
+      display: grid;
+      gap: 36px;
+    }
+
+    .case-gallery figure {
+      margin: 0;
+      width: 100%;
+    }
+
+    .case-gallery-image {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      border-radius: 22px;
+      border: 1px solid #ddd;
+      background: #fff;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .case-gallery-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+    }
+
+    .case-gallery figcaption {
+      min-height: 48px;
+      font-weight: 700;
+      margin: 12px 4px 0;
+      line-height: 1.5;
+    }
+
+    .case-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .case-tags span {
+      background: #fff;
+      border: 1px solid #ccc;
+      border-radius: 999px;
+      padding: 10px 14px;
+    }
+
+    .case-footer {
+      padding: 50px 0 80px;
+    }
+
+    @media (max-width: 800px) {
+      .case-meta,
+      .case-kpis,
+      .case-grid-two {
+        grid-template-columns: 1fr;
+      }
+
+      .case-header {
+        gap: 20px;
+      }
+
+      .case-hero {
+        padding-top: 40px;
+      }
+
+      .case-cover,
+      .case-gallery-image {
+        aspect-ratio: 16 / 9;
+      }
     }
   </style>
 </head>
+
 <body>
+
   <main class="case-page">
+
     <div class="case-shell">
+
       <header class="case-header">
+
         <a class="brand" href="index.html#top">
           <span class="brand-mark">MC</span>
-          <span class="brand-copy"><strong>Mourad Chafiqi</strong><small>Data Analyst</small></span>
+
+          <span class="brand-copy">
+            <strong>Mourad Chafiqi</strong>
+            <small>Data Analyst</small>
+          </span>
         </a>
-        <a class="case-back" href="index.html#projects">← Retour aux projets</a>
+
+        <a class="case-back" href="index.html#projects">
+          ← Retour aux projets
+        </a>
+
       </header>
 
       <section class="case-hero">
-        <p class="case-eyebrow">Power BI · Automotive Analytics · Portfolio Project</p>
-        <h1>Renault Morocco<br>Automotive Sales Dashboard</h1>
+
+        <p class="case-eyebrow">
+          Power BI · Automotive Analytics · Portfolio Project
+        </p>
+
+        <h1>
+          Renault Morocco<br>
+          Automotive Sales Dashboard
+        </h1>
+
         <p class="case-lead">
           Projet Power BI de bout en bout consacré au pilotage des ventes automobiles au Maroc.
           Le rapport couvre la performance commerciale, les objectifs, la rentabilité, le stock
           et la documentation des KPI.
         </p>
+
         <div class="case-cover">
-          <img src="images/renault/home.png" alt="Page Home du rapport Renault Morocco">
+          <img
+            src="images/renault/home.png"
+            alt="Page Home du rapport Renault Morocco"
+          >
         </div>
+
       </section>
 
       <section class="case-meta">
-        <article><span>Outil principal</span><strong>Power BI</strong></article>
-        <article><span>Préparation</span><strong>Power Query M</strong></article>
-        <article><span>Calculs</span><strong>DAX</strong></article>
-        <article><span>Domaine</span><strong>Sales · Profitability · Inventory</strong></article>
+
+        <article>
+          <span>Outil principal</span>
+          <strong>Power BI</strong>
+        </article>
+
+        <article>
+          <span>Préparation</span>
+          <strong>Power Query M</strong>
+        </article>
+
+        <article>
+          <span>Calculs</span>
+          <strong>DAX</strong>
+        </article>
+
+        <article>
+          <span>Domaine</span>
+          <strong>Sales · Profitability · Inventory</strong>
+        </article>
+
       </section>
 
       <section class="case-section">
+
         <h2>Contexte du projet</h2>
+
         <div class="case-grid-two">
+
           <article class="case-card">
+
             <h3>Besoin métier</h3>
+
             <p>
               Créer une vue décisionnelle unique pour analyser les ventes, le chiffre d’affaires,
               la marge, les remises, les objectifs commerciaux et la disponibilité du stock par
               période, région, agence et modèle.
             </p>
+
           </article>
+
           <article class="case-card">
+
             <h3>Approche</h3>
+
             <p>
               Construction d’un modèle analytique Power BI avec préparation des données,
               mesures DAX, filtres métier cohérents, navigation entre pages et documentation
               centralisée des indicateurs.
             </p>
+
           </article>
+
         </div>
+
       </section>
 
       <section class="case-section">
+
         <h2>Indicateurs suivis</h2>
+
         <div class="case-kpis">
-          <div><span>Sales</span><strong>Units Sold</strong></div>
-          <div><span>Revenue</span><strong>Revenue</strong></div>
-          <div><span>Profitability</span><strong>Total Margin</strong></div>
-          <div><span>Profitability</span><strong>Margin Rate</strong></div>
-          <div><span>Pricing</span><strong>Average Selling Price</strong></div>
-          <div><span>Discount</span><strong>Discount Rate</strong></div>
-          <div><span>Customer</span><strong>Average Satisfaction</strong></div>
-          <div><span>Inventory</span><strong>Available Stock</strong></div>
-          <div><span>Inventory</span><strong>Inventory Value</strong></div>
-          <div><span>Inventory</span><strong>Average Days in Stock</strong></div>
-          <div><span>Targets</span><strong>Revenue Achievement</strong></div>
-          <div><span>Governance</span><strong>22 documented KPIs</strong></div>
+
+          <div>
+            <span>Sales</span>
+            <strong>Units Sold</strong>
+          </div>
+
+          <div>
+            <span>Revenue</span>
+            <strong>Revenue</strong>
+          </div>
+
+          <div>
+            <span>Profitability</span>
+            <strong>Total Margin</strong>
+          </div>
+
+          <div>
+            <span>Profitability</span>
+            <strong>Margin Rate</strong>
+          </div>
+
+          <div>
+            <span>Pricing</span>
+            <strong>Average Selling Price</strong>
+          </div>
+
+          <div>
+            <span>Discount</span>
+            <strong>Discount Rate</strong>
+          </div>
+
+          <div>
+            <span>Customer</span>
+            <strong>Average Satisfaction</strong>
+          </div>
+
+          <div>
+            <span>Inventory</span>
+            <strong>Available Stock</strong>
+          </div>
+
+          <div>
+            <span>Inventory</span>
+            <strong>Inventory Value</strong>
+          </div>
+
+          <div>
+            <span>Inventory</span>
+            <strong>Average Days in Stock</strong>
+          </div>
+
+          <div>
+            <span>Targets</span>
+            <strong>Revenue Achievement</strong>
+          </div>
+
+          <div>
+            <span>Governance</span>
+            <strong>22 documented KPIs</strong>
+          </div>
+
         </div>
+
       </section>
 
       <section class="case-section">
+
         <h2>Points techniques</h2>
+
         <div class="case-grid-two">
+
           <article class="case-card">
+
             <h3>Modèle &amp; calculs</h3>
+
             <ul>
               <li>Modélisation orientée analyse commerciale.</li>
               <li>Mesures DAX pour ventes, marges, remises, objectifs et écarts.</li>
               <li>Filtres par année, mois, région, agence et modèle.</li>
               <li>Analyse Target vs Actual et calcul des variances.</li>
             </ul>
+
           </article>
+
           <article class="case-card">
+
             <h3>Expérience utilisateur</h3>
+
             <ul>
               <li>Navigation entre 6 pages métier.</li>
               <li>Reset global des filtres.</li>
               <li>Analyse régionale et par représentant commercial.</li>
               <li>Documentation dynamique des KPI et formules DAX.</li>
             </ul>
+
           </article>
+
         </div>
+
       </section>
 
       <section class="case-section">
+
         <h2>Pages du dashboard</h2>
+
         <div class="case-gallery">
+
           <figure>
-            <img src="images/renault/executive-overview.png" alt="Executive Overview">
-            <figcaption>Executive Overview — ventes, marge, objectifs et stock.</figcaption>
+
+            <div class="case-gallery-image">
+              <img
+                src="images/renault/executive-overview.png"
+                alt="Executive Overview"
+              >
+            </div>
+
+            <figcaption>
+              Executive Overview — ventes, marge, objectifs et stock.
+            </figcaption>
+
           </figure>
+
           <figure>
-            <img src="images/renault/sales-analysis.png" alt="Sales Analysis">
-            <figcaption>Sales Analysis — tendances, modèles, motorisations, canaux et typologie client.</figcaption>
+
+            <div class="case-gallery-image">
+              <img
+                src="images/renault/sales-analysis.png"
+                alt="Sales Analysis"
+              >
+            </div>
+
+            <figcaption>
+              Sales Analysis — tendances, modèles, motorisations, canaux et typologie client.
+            </figcaption>
+
           </figure>
+
           <figure>
-            <img src="images/renault/sales-performance.png" alt="Sales Performance">
-            <figcaption>Sales Performance — objectifs, variances, régions et représentants.</figcaption>
+
+            <div class="case-gallery-image">
+              <img
+                src="images/renault/sales-performance.png"
+                alt="Sales Performance"
+              >
+            </div>
+
+            <figcaption>
+              Sales Performance — objectifs, variances, régions et représentants.
+            </figcaption>
+
           </figure>
+
           <figure>
-            <img src="images/renault/inventory-profitability.png" alt="Inventory and Profitability">
-            <figcaption>Inventory &amp; Profitability — stock, rotation, marge, remise et modèles à surveiller.</figcaption>
+
+            <div class="case-gallery-image">
+              <img
+                src="images/renault/inventory-profitability.png"
+                alt="Inventory and Profitability"
+              >
+            </div>
+
+            <figcaption>
+              Inventory &amp; Profitability — stock, rotation, marge, remise et modèles à surveiller.
+            </figcaption>
+
           </figure>
+
           <figure>
-            <img src="images/renault/kpi-documentation.png" alt="KPI Documentation">
-            <figcaption>KPI Documentation — définitions métier, périmètre, tables sources et formules DAX.</figcaption>
+
+            <div class="case-gallery-image">
+              <img
+                src="images/renault/kpi-documentation.png"
+                alt="KPI Documentation"
+              >
+            </div>
+
+            <figcaption>
+              KPI Documentation — définitions métier, périmètre, tables sources et formules DAX.
+            </figcaption>
+
           </figure>
+
         </div>
+
       </section>
 
       <section class="case-section">
+
         <h2>Stack technique</h2>
+
         <div class="case-tags">
+
           <span>Power BI</span>
           <span>Power Query M</span>
           <span>DAX</span>
@@ -177,15 +555,22 @@
           <span>Sales Analytics</span>
           <span>Inventory Analytics</span>
           <span>Data Visualization</span>
+
         </div>
+
       </section>
 
       <footer class="case-footer">
+
         <a class="button button-primary" href="index.html#projects">
           Retour au portfolio<span aria-hidden="true">↗</span>
         </a>
+
       </footer>
+
     </div>
+
   </main>
+
 </body>
 </html>
