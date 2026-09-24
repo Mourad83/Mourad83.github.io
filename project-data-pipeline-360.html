@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DATA PIPELINE 360 | Mourad Chafiqi</title>
+  <style>
+    :root {
+      --bg: #f5f7fb;
+      --card: #ffffff;
+      --text: #111827;
+      --muted: #6b7280;
+      --line: #e5e7eb;
+      --navy: #0b2341;
+      --gold: #c58a24;
+      --gold-light: #f2d08b;
+      --shadow: 0 10px 30px rgba(11, 35, 65, 0.08);
+      --radius: 18px;
+      --radius-sm: 12px;
+      --max: 1200px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .container {
+      width: min(100% - 32px, var(--max));
+      margin: 0 auto;
+    }
+
+    .topbar {
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky;
+      top: 0;
+      z-index: 20;
+    }
+
+    .topbar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 16px 0;
+    }
+
+    .brand {
+      font-weight: 800;
+      letter-spacing: 0.3px;
+      color: var(--navy);
+    }
+
+    .brand span {
+      color: var(--gold);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      padding: 10px 16px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: #fff;
+      color: var(--navy);
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .nav-links a:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+    }
+
+    .hero {
+      padding: 42px 0 28px;
+    }
+
+    .hero-card {
+      background: linear-gradient(135deg, #ffffff 0%, #f7f9fc 100%);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+      border-radius: 24px;
+      padding: 36px;
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 28px;
+      align-items: center;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: rgba(197, 138, 36, 0.12);
+      color: var(--gold);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.3px;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+
+    h1 {
+      margin: 0 0 10px;
+      font-size: 42px;
+      line-height: 1.1;
+      color: var(--navy);
+    }
+
+    h1 span {
+      color: var(--gold);
+    }
+
+    .subtitle {
+      margin: 0 0 16px;
+      color: #374151;
+      font-size: 20px;
+      font-weight: 600;
+    }
+
+    .hero-text p {
+      margin: 0 0 16px;
+      color: var(--muted);
+      font-size: 16px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 20px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 18px;
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: 14px;
+      transition: 0.2s ease;
+    }
+
+    .btn-primary {
+      background: var(--navy);
+      color: #fff;
+    }
+
+    .btn-primary:hover {
+      background: #14345f;
+    }
+
+    .btn-secondary {
+      background: #fff;
+      color: var(--navy);
+      border: 1px solid var(--line);
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+    }
+
+    .hero-image img {
+      width: 100%;
+      border-radius: 18px;
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+      display: block;
+    }
+
+    .section {
+      padding: 22px 0;
+    }
+
+    .section-header {
+      margin-bottom: 18px;
+    }
+
+    .section-header h2 {
+      margin: 0 0 8px;
+      font-size: 28px;
+      color: var(--navy);
+    }
+
+    .section-header p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 22px;
+    }
+
+    .card h3 {
+      margin: 0 0 10px;
+      color: var(--navy);
+      font-size: 20px;
+    }
+
+    .card p,
+    .card li {
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .list {
+      margin: 0;
+      padding-left: 18px;
+    }
+
+    .kpi-strip {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .kpi-item {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 20px;
+      text-align: center;
+      box-shadow: var(--shadow);
+    }
+
+    .kpi-item .label {
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .kpi-item .value {
+      color: var(--navy);
+      font-size: 26px;
+      font-weight: 800;
+    }
+
+    .pipeline-diagram {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      box-shadow: var(--shadow);
+      padding: 24px;
+    }
+
+    .pipeline-flow {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 12px;
+      align-items: stretch;
+    }
+
+    .flow-step {
+      border: 1px solid var(--gold-light);
+      border-radius: 16px;
+      background: linear-gradient(180deg, #fffdf8 0%, #ffffff 100%);
+      padding: 16px 14px;
+      position: relative;
+      min-height: 150px;
+    }
+
+    .flow-step:not(:last-child)::after {
+      content: "→";
+      position: absolute;
+      right: -11px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--gold);
+      font-size: 24px;
+      font-weight: 900;
+      z-index: 2;
+      background: var(--bg);
+      padding: 0 4px;
+    }
+
+    .flow-num {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: rgba(197, 138, 36, 0.14);
+      color: var(--gold);
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+
+    .flow-title {
+      color: var(--navy);
+      font-weight: 800;
+      font-size: 15px;
+      margin-bottom: 8px;
+    }
+
+    .flow-text {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    .tech-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .tag {
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: #fff;
+      border: 1px solid var(--line);
+      color: var(--navy);
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    .screens-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    .screen-card {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    .screen-card img {
+      width: 100%;
+      display: block;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .screen-content {
+      padding: 16px 18px;
+    }
+
+    .screen-content h3 {
+      margin: 0 0 8px;
+      font-size: 18px;
+      color: var(--navy);
+    }
+
+    .screen-content p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .architecture-note {
+      margin-top: 14px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .footer {
+      padding: 30px 0 50px;
+      color: var(--muted);
+      font-size: 14px;
+      text-align: center;
+    }
+
+    @media (max-width: 1100px) {
+      .hero-card,
+      .grid-2,
+      .grid-3,
+      .screens-grid,
+      .kpi-strip,
+      .pipeline-flow {
+        grid-template-columns: 1fr;
+      }
+
+      .flow-step:not(:last-child)::after {
+        content: "↓";
+        right: auto;
+        left: 50%;
+        top: auto;
+        bottom: -18px;
+        transform: translateX(-50%);
+        background: #fff;
+      }
+    }
+
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 32px;
+      }
+
+      .hero-card {
+        padding: 24px;
+      }
+
+      .topbar-inner {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <div class="brand">Mourad <span>Chafiqi</span> | Portfolio</div>
+      <nav class="nav-links">
+        <a href="index.html">Accueil</a>
+        <a href="index.html#projects">Projets</a>
+        <a href="en.html">EN</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <div class="hero-card">
+          <div class="hero-text">
+            <div class="badge">Projet Power BI • Python • SQL • SQLite</div>
+            <h1>DATA <span>PIPELINE 360</span></h1>
+            <p class="subtitle">Automated Analytics Pipeline</p>
+            <p>
+              DATA PIPELINE 360 est un projet de bout en bout qui montre comment transformer des fichiers sources bruts en un reporting Power BI structuré, fiable et exploitable.
+            </p>
+            <p>
+              Le projet couvre toute la chaîne : réception des fichiers, contrôle qualité, traitement Python, stockage SQLite, création de vues SQL, modélisation Power BI et visualisation des KPI.
+            </p>
+            <div class="hero-actions">
+              <a href="#pages" class="btn btn-primary">Voir les pages du rapport</a>
+              <a href="#architecture" class="btn btn-secondary">Voir l’architecture</a>
+            </div>
+          </div>
+          <div class="hero-image">
+            <img src="images/data-pipeline-360/HOME.png" alt="DATA PIPELINE 360 Home Page">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="kpi-strip">
+          <div class="kpi-item">
+            <div class="label">Données sources</div>
+            <div class="value">CSV + Excel</div>
+          </div>
+          <div class="kpi-item">
+            <div class="label">Traitement</div>
+            <div class="value">Python</div>
+          </div>
+          <div class="kpi-item">
+            <div class="label">Base de données</div>
+            <div class="value">SQLite + SQL</div>
+          </div>
+          <div class="kpi-item">
+            <div class="label">Restitution</div>
+            <div class="value">Power BI</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <h2>Objectif du projet</h2>
+          <p>Construire une chaîne analytique complète, automatisée et maintenable.</p>
+        </div>
+        <div class="grid-2">
+          <div class="card">
+            <h3>Contexte</h3>
+            <p>
+              Les entreprises reçoivent souvent plusieurs fichiers métiers dans des formats différents. Sans pipeline clair, les contrôles sont manuels, les erreurs se multiplient et le reporting manque de fiabilité.
+            </p>
+          </div>
+          <div class="card">
+            <h3>Réponse apportée</h3>
+            <p>
+              Ce projet met en place un pipeline qui centralise les sources, contrôle leur qualité, crée des vues analytiques SQL et alimente un rapport Power BI multi-pages orienté pilotage.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="architecture">
+      <div class="container">
+        <div class="section-header">
+          <h2>Architecture du pipeline</h2>
+          <p>Vue simplifiée des blocs techniques, de la réception des fichiers jusqu’au reporting final.</p>
+        </div>
+
+        <div class="pipeline-diagram">
+          <div class="pipeline-flow">
+            <div class="flow-step">
+              <div class="flow-num">01</div>
+              <div class="flow-title">Réception des fichiers sources</div>
+              <div class="flow-text">
+                Dépôt des fichiers bruts dans le dossier landing :
+                CSV Sales, Excel Master Data, CSV Targets.
+              </div>
+            </div>
+
+            <div class="flow-step">
+              <div class="flow-num">02</div>
+              <div class="flow-title">Traitement Python</div>
+              <div class="flow-text">
+                Lecture des fichiers, validation des colonnes, contrôle des types, détection des doublons et des valeurs invalides.
+              </div>
+            </div>
+
+            <div class="flow-step">
+              <div class="flow-num">03</div>
+              <div class="flow-title">Contrôle qualité</div>
+              <div class="flow-text">
+                Création de l’historique de traitement avec statut SUCCESS / FAILED / ERROR et détail des anomalies détectées.
+              </div>
+            </div>
+
+            <div class="flow-step">
+              <div class="flow-num">04</div>
+              <div class="flow-title">Chargement SQLite</div>
+              <div class="flow-text">
+                Insertion des données valides dans les tables du modèle et conservation de l’historique de chargement.
+              </div>
+            </div>
+
+            <div class="flow-step">
+              <div class="flow-num">05</div>
+              <div class="flow-title">Vues SQL analytiques</div>
+              <div class="flow-text">
+                Création des vues métiers pour les ventes, produits, clients, objectifs et qualité des données.
+              </div>
+            </div>
+
+            <div class="flow-step">
+              <div class="flow-num">06</div>
+              <div class="flow-title">Power BI Reporting</div>
+              <div class="flow-text">
+                Modélisation, mesures DAX, navigation entre pages, filtres et visualisations interactives.
+              </div>
+            </div>
+          </div>
+
+          <p class="architecture-note">
+            Dessin du flux : Sources → Python → Data Quality → SQLite / SQL Views → Power BI Model → Dashboard final.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <h2>Étapes détaillées</h2>
+          <p>Le projet suit une logique séquentielle simple et robuste.</p>
+        </div>
+
+        <div class="grid-3">
+          <div class="card">
+            <h3>1. Réception des sources</h3>
+            <ul class="list">
+              <li>CSV Sales pour les transactions.</li>
+              <li>Excel Master Data pour les dimensions produits, clients et magasins.</li>
+              <li>CSV Targets pour les objectifs commerciaux.</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h3>2. Scripts Python</h3>
+            <ul class="list">
+              <li>Ingestion des fichiers.</li>
+              <li>Contrôle de structure et de types.</li>
+              <li>Détection des doublons.</li>
+              <li>Gestion des erreurs et journalisation.</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h3>3. Stockage SQLite</h3>
+            <ul class="list">
+              <li>Tables fact et dimensions.</li>
+              <li>Historique des fichiers traités.</li>
+              <li>Base légère, simple à maintenir et portable.</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h3>4. Couche SQL</h3>
+            <ul class="list">
+              <li>vw_sales_daily</li>
+              <li>vw_sales_monthly</li>
+              <li>vw_product_performance</li>
+              <li>vw_customer_performance</li>
+              <li>vw_sales_vs_target</li>
+              <li>vw_data_quality</li>
+              <li>vw_sales_analysis</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h3>5. Modèle Power BI</h3>
+            <ul class="list">
+              <li>Relations entre tables.</li>
+              <li>Mesures DAX centralisées.</li>
+              <li>Filtres cohérents sur les visuels.</li>
+              <li>Formatage des KPI et navigation utilisateur.</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h3>6. Restitution finale</h3>
+            <ul class="list">
+              <li>Tableaux de bord pour les ventes.</li>
+              <li>Suivi des objectifs.</li>
+              <li>Surveillance du pipeline.</li>
+              <li>Documentation technique et KPI.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <h2>Stack technique</h2>
+          <p>Technologies utilisées dans le projet.</p>
+        </div>
+        <div class="card">
+          <div class="tech-tags">
+            <div class="tag">Python</div>
+            <div class="tag">Pandas</div>
+            <div class="tag">SQLite</div>
+            <div class="tag">SQL</div>
+            <div class="tag">Power BI</div>
+            <div class="tag">DAX</div>
+            <div class="tag">CSV</div>
+            <div class="tag">Excel</div>
+            <div class="tag">Data Quality</div>
+            <div class="tag">Dashboard Design</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="pages">
+      <div class="container">
+        <div class="section-header">
+          <h2>Pages du rapport</h2>
+          <p>Chaque page couvre un angle de pilotage spécifique.</p>
+        </div>
+
+        <div class="screens-grid">
+          <div class="screen-card">
+            <img src="images/data-pipeline-360/HOME.png" alt="HOME">
+            <div class="screen-content">
+              <h3>HOME</h3>
+              <p>Page d’accueil du projet avec identité visuelle et navigation vers les différentes vues analytiques.</p>
+            </div>
+          </div>
+
+          <div class="screen-card">
+            <img src="images/data-pipeline-360/EXECUTIVE OVERVIEW.png" alt="EXECUTIVE OVERVIEW">
+            <div class="screen-content">
+              <h3>EXECUTIVE OVERVIEW</h3>
+              <p>Vue synthétique des principaux KPI de ventes, tendances mensuelles, top produits et faits marquants.</p>
+            </div>
+          </div>
+
+          <div class="screen-card">
+            <img src="images/data-pipeline-360/SALES PERFORMANCE.png" alt="SALES PERFORMANCE">
+            <div class="screen-content">
+              <h3>SALES PERFORMANCE</h3>
+              <p>Analyse détaillée de la performance commerciale par période, catégorie, segment client et mix produits.</p>
+            </div>
+          </div>
+
+          <div class="screen-card">
+            <img src="images/data-pipeline-360/TARGET PERFORMANCE.png" alt="TARGET PERFORMANCE">
+            <div class="screen-content">
+              <h3>TARGET PERFORMANCE</h3>
+              <p>Comparaison entre le réalisé et les objectifs avec focus sur l’achievement, les écarts et la performance par magasin.</p>
+            </div>
+          </div>
+
+          <div class="screen-card">
+            <img src="images/data-pipeline-360/DATA QUALITY & PIPELINE.png" alt="DATA QUALITY & PIPELINE">
+            <div class="screen-content">
+              <h3>DATA QUALITY & PIPELINE</h3>
+              <p>Suivi technique du pipeline : fichiers traités, taux de succès, lignes rejetées, activité de chargement et erreurs détectées.</p>
+            </div>
+          </div>
+
+          <div class="screen-card">
+            <img src="images/data-pipeline-360/KPI DOCUMENTATION.png" alt="KPI DOCUMENTATION">
+            <div class="screen-content">
+              <h3>KPI DOCUMENTATION</h3>
+              <p>Documentation des KPI, de l’architecture, des vues SQL et des règles de qualité mises en place dans le projet.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <h2>Valeur apportée</h2>
+          <p>Ce que ce projet démontre sur le plan technique et analytique.</p>
+        </div>
+        <div class="grid-2">
+          <div class="card">
+            <h3>Dimension technique</h3>
+            <ul class="list">
+              <li>Automatisation du flux de traitement.</li>
+              <li>Contrôle qualité intégré.</li>
+              <li>Séparation claire entre ingestion, stockage, transformation et restitution.</li>
+              <li>Approche maintenable et évolutive.</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Dimension métier</h3>
+            <ul class="list">
+              <li>Vision claire de la performance commerciale.</li>
+              <li>Suivi des objectifs et des écarts.</li>
+              <li>Pilotage de la qualité des données.</li>
+              <li>Meilleure fiabilité pour la prise de décision.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      DATA PIPELINE 360 • Power BI • Python • SQL • SQLite
+    </div>
+  </footer>
+</body>
+</html>
