@@ -1,38 +1,178 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Finance 360 — Financial Performance & Budget Analytics, Power BI portfolio project by Mourad Chafiqi.">
-<title>Finance 360 | Financial Performance & Budget Analytics | Mourad Chafiqi</title>
-<link rel="icon" href="favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="styles.css">
-
-<style>
-.case-page{background:#f7f9fc;color:#15233d;min-height:100vh}.case-shell{width:min(1180px,calc(100% - 40px));margin:0 auto}
-.case-header{display:flex;justify-content:space-between;align-items:center;padding:24px 0;gap:20px}.case-header .brand{display:inline-flex;align-items:center;gap:14px;text-decoration:none}
-.case-header .brand-copy{display:flex;flex-direction:column;justify-content:center;line-height:1.1}.case-header .brand-copy strong{display:block;margin:0;color:#13254a}.case-header .brand-copy small{display:block;margin-top:5px;color:#71809b;text-transform:uppercase;letter-spacing:.08em}
-.case-actions{display:flex;align-items:center;gap:18px}.case-lang{display:flex;gap:8px}.case-lang a{padding:7px 10px;border-radius:999px;text-decoration:none;font-weight:800;color:#66738b}.case-lang a.is-active{background:#152f59;color:#fff}.case-back{text-decoration:none;color:#1b4f91;font-weight:700}
-.case-hero{padding:70px 0 48px}.case-eyebrow{margin:0 0 12px;color:#2870c7;text-transform:uppercase;letter-spacing:.12em;font-size:.82rem;font-weight:800}.case-hero h1{font-size:clamp(2.8rem,7vw,5.8rem);line-height:.95;margin:0;max-width:1050px;color:#13254a}.case-hero h1 span{color:#2870c7}.case-lead{font-size:1.18rem;line-height:1.7;max-width:900px;color:#5d6b80;margin-top:28px}
-.case-cover,.case-gallery-image{width:100%;aspect-ratio:16/9;border-radius:22px;border:1px solid #d5dfed;background:#fff;overflow:hidden;display:flex;align-items:center;justify-content:center}.case-cover{margin-top:46px;box-shadow:0 20px 55px rgba(30,70,120,.10)}.case-cover img,.case-gallery-image img{width:100%;height:100%;object-fit:contain;display:block}
-.case-meta{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:40px 0 80px}.case-meta article,.case-card{background:#fff;padding:22px;border:1px solid #dce4ef;border-radius:18px}.case-meta span{display:block;color:#71809b;font-size:.78rem;text-transform:uppercase;letter-spacing:.08em}.case-meta strong{display:block;margin-top:8px;color:#183d72}
-.case-section{padding:68px 0;border-top:1px solid #dfe6ef}.case-section h2{font-size:clamp(2rem,4vw,3.4rem);margin:0 0 26px;color:#13254a}.case-grid-two{display:grid;grid-template-columns:1fr 1fr;gap:28px}.case-card{padding:28px}.case-card h3{margin-top:0;color:#1b4f91}.case-card p,.case-card li{color:#5d6b80;line-height:1.7}
-.case-kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.case-kpis div{background:#152f59;color:#fff;border-radius:18px;padding:22px}.case-kpis span{display:block;color:#bcd2ee;font-size:.78rem;text-transform:uppercase}.case-kpis strong{display:block;margin-top:8px}
-.case-gallery{display:grid;gap:36px}.case-gallery figure{margin:0}.case-gallery-image{box-shadow:0 12px 30px rgba(20,50,90,.08)}.case-gallery figcaption{font-weight:700;margin:12px 4px 0;line-height:1.5;color:#36506f}
-.case-tags{display:flex;flex-wrap:wrap;gap:10px}.case-tags span{background:#fff;border:1px solid #cfdbea;border-radius:999px;padding:10px 14px;color:#244f84;font-weight:700}.case-footer{padding:50px 0 80px}
-@media(max-width:800px){.case-meta,.case-kpis,.case-grid-two{grid-template-columns:1fr}.case-header{align-items:flex-start;flex-direction:column}.case-hero{padding-top:40px}}
-</style>
-
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Finance 360 — Financial Performance & Budget Analytics, Power BI portfolio project by Mourad Chafiqi.">
+  <title>Finance 360 | Mourad Chafiqi</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .project-detail-page{background:#f6f9ff;color:#17223b}
+    .project-detail-header{max-width:1180px;margin:0 auto;padding:28px 24px 10px;display:flex;justify-content:space-between;align-items:center;gap:20px}
+    .project-detail-header a{text-decoration:none}
+    .project-back{display:inline-flex;align-items:center;gap:8px;font-weight:700;color:#0f3f7f}
+    .project-hero{max-width:1180px;margin:0 auto;padding:36px 24px 44px}
+    .project-kicker{color:#2f89ff;font-weight:800;letter-spacing:.08em;text-transform:uppercase;font-size:.82rem;margin-bottom:12px}
+    .project-hero h1{font-size:clamp(2.3rem,5vw,4.7rem);line-height:1;margin:0 0 14px;color:#13254a}
+    .project-hero h1 span{color:#2f89ff}
+    .project-subtitle{max-width:850px;font-size:1.18rem;line-height:1.7;color:#4d5d78;margin-bottom:28px}
+    .hero-image{width:100%;display:block;border-radius:24px;border:1px solid #cfe3ff;box-shadow:0 20px 55px rgba(28,74,133,.14);background:#fff}
+    .project-meta{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:22px}
+    .project-meta article{background:#fff;border:1px solid #d8e8ff;border-radius:16px;padding:18px}
+    .project-meta small{display:block;color:#71809b;text-transform:uppercase;letter-spacing:.05em;margin-bottom:6px}
+    .project-meta strong{color:#173f79;font-size:1rem}
+    .detail-section{max-width:1180px;margin:0 auto;padding:34px 24px}
+    .detail-section h2{font-size:2rem;color:#17223b;margin:0 0 18px}
+    .detail-section>p{max-width:900px;line-height:1.75;color:#52617a}
+    .overview-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:22px}
+    .overview-card{background:#fff;border:1px solid #d8e8ff;border-radius:18px;padding:24px}
+    .overview-card h3{margin-top:0;color:#173f79}
+    .overview-card p{color:#59667c;line-height:1.65;margin-bottom:0}
+    .kpi-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:22px}
+    .kpi-card{background:#fff;border:1px solid #d8e8ff;border-radius:16px;padding:20px}
+    .kpi-card strong{display:block;color:#2088ff;font-size:1.15rem;margin-bottom:7px}
+    .kpi-card span{color:#5c6880;line-height:1.5}
+    .gallery{display:grid;gap:28px;margin-top:24px}
+    .gallery figure{margin:0;background:#fff;border:1px solid #d8e8ff;border-radius:22px;padding:14px;box-shadow:0 14px 35px rgba(32,72,124,.08)}
+    .gallery img{width:100%;display:block;border-radius:14px}
+    .gallery figcaption{padding:14px 6px 4px;font-weight:700;color:#173f79}
+    .stack{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
+    .stack span{background:#eaf4ff;color:#1256a0;border:1px solid #cfe5ff;padding:9px 13px;border-radius:999px;font-weight:700;font-size:.9rem}
+    .project-footer-cta{max-width:1180px;margin:18px auto 60px;padding:0 24px}
+    .project-footer-cta div{background:#102e61;border-radius:22px;padding:28px;display:flex;justify-content:space-between;align-items:center;gap:20px;color:#fff}
+    .project-footer-cta h2{margin:0 0 6px;color:#fff}
+    .project-footer-cta p{margin:0;color:#c9ddf8}
+    @media(max-width:900px){.project-meta,.kpi-grid{grid-template-columns:repeat(2,1fr)}.overview-grid{grid-template-columns:1fr}.project-footer-cta div{align-items:flex-start;flex-direction:column}}
+    @media(max-width:600px){.project-meta,.kpi-grid{grid-template-columns:1fr}.project-detail-header{align-items:flex-start;flex-direction:column}}
+  </style>
 </head>
-<body><main class="case-page"><div class="case-shell">
-<header class="case-header">
-<a class="brand" href="en.html#top" aria-label="Back to portfolio"><span class="brand-mark">MC</span><span class="brand-copy"><strong>Mourad Chafiqi</strong><small>Data Analyst</small></span></a>
-<div class="case-actions"><div class="case-lang" aria-label="Language"><a href="project-finance-360.html">FR</a><a class="is-active" href="project-finance-360-en.html" aria-current="page">EN</a></div><a class="case-back" href="en.html#projects">← Back to projects</a></div>
+<body class="project-detail-page">
+<header class="project-detail-header">
+  <a class="brand" href="en.html" aria-label="Back to portfolio">
+    <span class="brand-mark">MC</span>
+    <span class="brand-copy"><strong>Mourad Chafiqi</strong><small>Data Analyst</small></span>
+  </a>
+  <a class="project-back" href="en.html#projects">← Back to projects</a>
 </header>
-<section class="case-hero"><p class="case-eyebrow">Power BI · Financial Analytics · Budget Management</p><h1>Finance 360<br><span>Financial Performance & Budget Analytics</span></h1><p class="case-lead">A Power BI solution designed to monitor revenue, costs, profitability and budget performance across entities, regions and business units.</p><div class="case-cover"><img src="images/finance-360/Home.png" alt="Finance 360 dashboard"></div></section>
-<section class="case-meta"><article><span>Main tool</span><strong>Power BI</strong></article><article><span>Data preparation</span><strong>Power Query M</strong></article><article><span>Calculations</span><strong>DAX</strong></article><article><span>Domain</span><strong>Financial Analytics</strong></article></section>
-<section class="case-section"><h2>Project context</h2><div class="case-grid-two"><article class="case-card"><h3>Business need</h3><p>Provide management with a consolidated financial view covering revenue, costs, operating profit, net profit, budgets and variances.</p></article><article class="case-card"><h3>BI approach</h3><p>Combine Actual and Budget data in a shared analytical model with financial DAX measures, time analysis and variance reporting.</p></article></div></section>
-<section class="case-section"><h2>Key metrics</h2><div class="case-kpis"><div><span>Revenue</span><strong>Revenue</strong></div><div><span>Costs</span><strong>Total Costs</strong></div><div><span>Profitability</span><strong>Gross Profit</strong></div><div><span>Profitability</span><strong>Operating Profit</strong></div><div><span>Profitability</span><strong>Net Profit</strong></div><div><span>Budget</span><strong>Budget</strong></div><div><span>Variance</span><strong>Budget Variance</strong></div><div><span>Variance</span><strong>Budget Variance %</strong></div><div><span>Margin</span><strong>Gross Margin</strong></div><div><span>Margin</span><strong>Operating Margin</strong></div><div><span>Margin</span><strong>Net Margin</strong></div><div><span>Governance</span><strong>Data As Of</strong></div></div></section>
-<section class="case-section"><h2>Technical highlights</h2><div class="case-grid-two"><article class="case-card"><h3>Data model &amp; calculations</h3><p>Shared dimensions for account, cost centre, entity, region, business unit and date, with DAX measures for Actual, Budget, absolute variance and percentage variance.</p></article><article class="case-card"><h3>User experience &amp; analysis</h3><p>Executive and detailed analysis of revenue, expenses, budget achievement and profitability, with consistent filters and management-oriented KPI cards.</p></article></div></section>
-<section class="case-section"><h2>Dashboard pages</h2><div class="case-gallery"><figure><div class="case-gallery-image"><img src="images/finance-360/Executive overview.png" alt="Executive Overview — consolidated financial performance."></div><figcaption>Executive Overview — consolidated financial performance.</figcaption></figure><figure><div class="case-gallery-image"><img src="images/finance-360/Revenue analysis.png" alt="Revenue Analysis — revenue trends and business drivers."></div><figcaption>Revenue Analysis — revenue trends and business drivers.</figcaption></figure><figure><div class="case-gallery-image"><img src="images/finance-360/Cost & expense analysis.png" alt="Cost & Expense Analysis — cost structure and expense trends."></div><figcaption>Cost & Expense Analysis — cost structure and expense trends.</figcaption></figure><figure><div class="case-gallery-image"><img src="images/finance-360/Budget vs actual.png" alt="Budget vs Actual — achievement and variance analysis."></div><figcaption>Budget vs Actual — achievement and variance analysis.</figcaption></figure><figure><div class="case-gallery-image"><img src="images/finance-360/Profitability analysis.png" alt="Profitability Analysis — profit and margin performance."></div><figcaption>Profitability Analysis — profit and margin performance.</figcaption></figure></div></section>
-<section class="case-section"><h2>Skills demonstrated</h2><div class="case-tags"><span>Power BI</span><span>Power Query M</span><span>DAX</span><span>Data Modeling</span><span>Financial Analytics</span><span>Budget Analysis</span><span>Variance Analysis</span><span>Profitability</span></div></section>
-<footer class="case-footer"><a class="button button-primary" href="en.html#projects">Back to portfolio <span aria-hidden="true">↗</span></a></footer>
-</div></main></body></html>
+
+<main>
+  <section class="project-hero">
+    <p class="project-kicker">Power BI · Financial Analytics · Budgeting</p>
+    <h1>FINANCE <span>360</span></h1>
+    <p class="project-subtitle">
+      Financial Performance &amp; Budget Analytics — a Power BI solution designed to monitor
+      revenue, costs, profitability and budget variances across entities,
+      regions and business units.
+    </p>
+
+    <img class="hero-image" src="images/finance-360/Home.png" alt="Finance 360 Home page">
+
+    <div class="project-meta">
+      <article><small>Main tool</small><strong>Power BI</strong></article>
+      <article><small>Data preparation</small><strong>Power Query M</strong></article>
+      <article><small>Calculations</small><strong>DAX</strong></article>
+      <article><small>Domain</small><strong>Financial Analytics</strong></article>
+    </div>
+  </section>
+
+  <section class="detail-section">
+    <h2>Context &amp; objective</h2>
+    <p>
+      Finance 360 was built as a complete financial case study designed to provide
+      a consolidated view of financial performance. The report compares actual and budget
+      data to quickly identify variances, key cost drivers, the most profitable
+      business units and margin trends.
+    </p>
+
+    <div class="overview-grid">
+      <article class="overview-card">
+        <h3>Business need</h3>
+        <p>
+          Provide management with a clear view of revenue, costs, margins,
+          operating profit, net profit and budget execution, with analysis
+          by month, entity, region and business unit.
+        </p>
+      </article>
+
+      <article class="overview-card">
+        <h3>BI solution</h3>
+        <p>
+          Power BI model structured around financial and budget facts, shared
+          dimensions, Power Query transformations, DAX measures and decision-oriented
+          visualizations with favorable / unfavorable variance analysis.
+        </p>
+      </article>
+    </div>
+  </section>
+
+  <section class="detail-section">
+    <h2>Key metrics</h2>
+    <div class="kpi-grid">
+      <article class="kpi-card"><strong>Total Revenue</strong><span>Tracking actual revenue and comparing it with budget.</span></article>
+      <article class="kpi-card"><strong>Total Costs</strong><span>Analysis of cost structure and budget overruns.</span></article>
+      <article class="kpi-card"><strong>Gross Profit</strong><span>Gross profit after taking cost of sales into account.</span></article>
+      <article class="kpi-card"><strong>Gross Margin</strong><span>Analysis of margin level and variance versus budget.</span></article>
+      <article class="kpi-card"><strong>Operating Profit</strong><span>Tracking operating performance after operating expenses.</span></article>
+      <article class="kpi-card"><strong>Net Profit</strong><span>Final result and comparison with the budget target.</span></article>
+      <article class="kpi-card"><strong>Budget Variance</strong><span>Absolute variance between actual and budget.</span></article>
+      <article class="kpi-card"><strong>Budget Achievement</strong><span>Measurement of financial target achievement.</span></article>
+    </div>
+  </section>
+
+  <section class="detail-section">
+    <h2>Report pages</h2>
+    <div class="gallery">
+      <figure>
+        <img src="images/finance-360/Executive overview.png" alt="Executive Overview Finance 360">
+        <figcaption>Executive Overview</figcaption>
+      </figure>
+      <figure>
+        <img src="images/finance-360/Revenue analysis.png" alt="Revenue Analysis Finance 360">
+        <figcaption>Revenue Analysis</figcaption>
+      </figure>
+      <figure>
+        <img src="images/finance-360/Cost &amp; expense analysis.png" alt="Cost and Expense Analysis Finance 360">
+        <figcaption>Cost &amp; Expense Analysis</figcaption>
+      </figure>
+      <figure>
+        <img src="images/finance-360/Budget vs actual.png" alt="Budget versus Actual Finance 360">
+        <figcaption>Budget vs Actual</figcaption>
+      </figure>
+      <figure>
+        <img src="images/finance-360/Profitability analysis.png" alt="Profitability Analysis Finance 360">
+        <figcaption>Profitability Analysis</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="detail-section">
+    <h2>Skills demonstrated</h2>
+    <div class="stack">
+      <span>Power BI</span>
+      <span>Power Query M</span>
+      <span>DAX</span>
+      <span>Data Modeling</span>
+      <span>Financial Analytics</span>
+      <span>Budget Analysis</span>
+      <span>Variance Analysis</span>
+      <span>Profitability Analysis</span>
+      <span>KPI Design</span>
+      <span>Dashboard UX/UI</span>
+    </div>
+  </section>
+
+  <section class="project-footer-cta">
+    <div>
+      <section>
+        <h2>Finance 360</h2>
+        <p>Financial Performance &amp; Budget Analytics</p>
+      </section>
+      <a class="button button-primary" href="en.html#projects">
+        Back to portfolio <span aria-hidden="true">←</span>
+      </a>
+    </div>
+  </section>
+</main>
+</body>
+</html>

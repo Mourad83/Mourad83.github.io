@@ -690,6 +690,59 @@
       </div>
     </section>
 
+
+    <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <h2>Défis techniques</h2>
+          <p>Trois problèmes concrets traités pendant la construction du pipeline.</p>
+        </div>
+        <div class="grid-3">
+          <div class="card">
+            <h3>1. Fiabiliser les fichiers entrants</h3>
+            <p><strong>Problème :</strong> les fichiers peuvent contenir des colonnes manquantes, doublons, dates invalides, quantités négatives ou références inconnues.</p>
+            <p><strong>Solution :</strong> mise en place de contrôles Python avant chargement : structure, valeurs nulles, doublons, types, cohérence des montants et clés de référence.</p>
+            <p><strong>Résultat :</strong> les fichiers non conformes sont rejetés avant leur intégration dans la base et les anomalies sont tracées.</p>
+          </div>
+          <div class="card">
+            <h3>2. Éviter les doubles chargements</h3>
+            <p><strong>Problème :</strong> un même fichier ne doit pas être chargé plusieurs fois lors des exécutions successives du pipeline.</p>
+            <p><strong>Solution :</strong> utilisation de la table <strong>File_History</strong> et des statuts SUCCESS / FAILED / ERROR pour suivre chaque traitement.</p>
+            <p><strong>Résultat :</strong> les fichiers déjà chargés avec succès sont identifiés et le traitement devient traçable.</p>
+          </div>
+          <div class="card">
+            <h3>3. Préparer les données pour l’analyse</h3>
+            <p><strong>Problème :</strong> les données transactionnelles brutes ne sont pas directement adaptées au reporting et aux analyses récurrentes.</p>
+            <p><strong>Solution :</strong> création d’un modèle SQLite avec tables de faits et dimensions, puis de vues SQL dédiées aux ventes, clients, produits, objectifs et à la Data Quality.</p>
+            <p><strong>Résultat :</strong> Power BI consomme une couche analytique structurée et réutilisable.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <h2>Insights issus des données</h2>
+          <p>Quelques résultats obtenus à partir des données de démonstration du projet.</p>
+        </div>
+        <div class="grid-3">
+          <div class="card">
+            <h3>Performance clients</h3>
+            <p><strong>Nadia El Amrani</strong> est le premier client du jeu de données avec <strong>2 073,70</strong> de ventes, devant Nord Distribution (<strong>899,00</strong>) et Atlas Services (<strong>769,30</strong>).</p>
+          </div>
+          <div class="card">
+            <h3>Performance produits</h3>
+            <p><strong>Laptop 15 Inch</strong> génère le chiffre de ventes le plus élevé avec <strong>1 199,00</strong>, suivi de Wireless Headphones (<strong>1 029,70</strong>) et Smartphone (<strong>899,00</strong>).</p>
+          </div>
+          <div class="card">
+            <h3>Performance magasins</h3>
+            <p><strong>Rabat Agdal</strong> arrive en tête avec <strong>2 073,70</strong> de ventes, devant Casablanca Center (<strong>1 238,80</strong>) et Atlas Online (<strong>1 018,60</strong>).</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section class="section">
       <div class="container">
         <div class="section-header">

@@ -690,6 +690,59 @@
       </div>
     </section>
 
+
+    <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <h2>Technical challenges</h2>
+          <p>Three concrete problems addressed while building the pipeline.</p>
+        </div>
+        <div class="grid-3">
+          <div class="card">
+            <h3>1. Making incoming files reliable</h3>
+            <p><strong>Problem:</strong> incoming files may contain missing columns, duplicates, invalid dates, negative quantities or unknown reference IDs.</p>
+            <p><strong>Solution:</strong> Python validation checks are applied before loading, covering structure, null values, duplicates, data types, amount consistency and reference keys.</p>
+            <p><strong>Result:</strong> non-compliant files are rejected before database loading and detected anomalies are recorded.</p>
+          </div>
+          <div class="card">
+            <h3>2. Preventing duplicate loads</h3>
+            <p><strong>Problem:</strong> the same file must not be loaded multiple times across successive pipeline runs.</p>
+            <p><strong>Solution:</strong> the <strong>File_History</strong> table and SUCCESS / FAILED / ERROR statuses are used to track each processing attempt.</p>
+            <p><strong>Result:</strong> successfully processed files can be identified and the loading process becomes traceable.</p>
+          </div>
+          <div class="card">
+            <h3>3. Preparing data for analytics</h3>
+            <p><strong>Problem:</strong> raw transactional data is not directly suited to recurring reporting and analysis.</p>
+            <p><strong>Solution:</strong> a SQLite model with fact and dimension tables was created, followed by SQL views for sales, customers, products, targets and Data Quality.</p>
+            <p><strong>Result:</strong> Power BI consumes a structured and reusable analytical layer.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <h2>Data insights</h2>
+          <p>Selected findings produced from the project's demonstration dataset.</p>
+        </div>
+        <div class="grid-3">
+          <div class="card">
+            <h3>Customer performance</h3>
+            <p><strong>Nadia El Amrani</strong> is the top customer in the dataset with <strong>2,073.70</strong> in sales, followed by Nord Distribution (<strong>899.00</strong>) and Atlas Services (<strong>769.30</strong>).</p>
+          </div>
+          <div class="card">
+            <h3>Product performance</h3>
+            <p><strong>Laptop 15 Inch</strong> generates the highest sales value at <strong>1,199.00</strong>, followed by Wireless Headphones (<strong>1,029.70</strong>) and Smartphone (<strong>899.00</strong>).</p>
+          </div>
+          <div class="card">
+            <h3>Store performance</h3>
+            <p><strong>Rabat Agdal</strong> ranks first with <strong>2,073.70</strong> in sales, ahead of Casablanca Center (<strong>1,238.80</strong>) and Atlas Online (<strong>1,018.60</strong>).</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section class="section">
       <div class="container">
         <div class="section-header">
